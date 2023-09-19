@@ -2,9 +2,9 @@
 A reverse engineering project that traces file loading in wordpress system.
 ## There are two classes
 1. analyzer
-   It is the start of the project. It will call an object of file_analyzer and then log the next file in the log file
+   -It is the start of the project. It will call an object of file_analyzer and then log the next file in the log file
 3. file_analyzer
-   It will open the next file, reach each line, and analyzer each line. When the line is a require type statement, it will find out the file name and the absolute path, which will be the next file.
+   -It will open the next file, reach each line, and analyzer each line. When the line is a require type statement, it will find out the file name and the absolute path, which will be the next file.
 
 ## the analyzer class
 1. It contains several global varibales
@@ -31,16 +31,16 @@ A reverse engineering project that traces file loading in wordpress system.
    - $log_dbug - whether the line is a log of a debug
    - $allLinks - the array of all links inside the current file.
    
-3. It contains 11 methods
-   a. read_file()
-   b. open_file_handler()
-   c. fetch_lines()
-   d. remove_comments()
-   e. is_define_constant()
-   f. is_global_variable()
-   g. is_require_statement()
-   h. get_full_name()
-   i. next_link()
-   j. close_file_handler()
-   k. reset_file()
+2. It contains 11 methods
+   - read_file()
+   - open_file_handler()
+   - fetch_lines()
+   - remove_comments()
+   - is_define_constant()
+   - is_global_variable()
+   - is_require_statement()
+   - get_full_name()
+   - next_link()
+   - close_file_handler()
+   - reset_file()
    
