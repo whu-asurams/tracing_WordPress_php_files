@@ -1,5 +1,10 @@
 # tracing_WordPress_php_files
-A reverse engineering project that traces file loading in wordpress system.
+A reverse engineering project that traces file loading in wordpress system. 
+
+- The file "pseudocompiler.php" is created for the usage inside the wordpress system.
+- The file "pcompilerOutput.txt" is the log file of the trace results.
+
+
 ## There are two classes
 1. analyzer
    
