@@ -11,10 +11,13 @@ A reverse engineering project that traces file loading in wordpress system.
 
 ## the analyzer class
 1. It contains several global varibales
-   The starting file name for tracing, and the log filename for the trace
+   
+   - The starting file name for tracing, and the log filename for the trace
+   
 3. It has two methods
-   The run method, which starts the trace.
-   The next_file method, which log the next file.
+   
+   - The run method, which starts the trace.
+   - The next_file method, which log the next file.
 
 ## the file_analyzer class
 1. It contains a bunch of global variables
