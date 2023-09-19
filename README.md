@@ -3,6 +3,7 @@ A reverse engineering project that traces file loading in wordpress system.
 
 - The file "pseudocompiler.php" is created for the usage inside the wordpress system.
 - The file "pcompilerOutput.txt" is the log file of the trace results.
+- the folder "whu_system" is intended to replace the wordpress, which includes the minimum of so many php files in wordpress. However, it is not quite completed yet.
 
 
 ## There are two classes
