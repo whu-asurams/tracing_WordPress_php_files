@@ -1,9 +1,18 @@
 <?php
 
 /*
+    The class file_analyzer will analyze the next file in trace.
+    It will open the file, then read each line. After reading each line,
+    It will remove comments. Then check whether it is 
+    a definition of a constant, a variable, or a global varibale,
+    or it is a a require type statement. 
 
+    If it is a require type statement, then get the full path, and
+    go to next file.
+    
+    Remark: There is a logic problem here, which needs more work.
 
-*/
+*/  
 
 
 class file_analyzer{
@@ -53,6 +62,13 @@ class file_analyzer{
         $this->allLinks = array();
         
     }
+    /*
+    1. the read_file method will open the file. It calls
+        the other three methods
+        a. open_file_hanlder()
+        b. fetch_lines() from above opened file handler
+        c. close_file_handler() to close the file
+    */
     function read_File( ){
         
         if($this->open_file_handler()){
@@ -65,6 +81,10 @@ class file_analyzer{
         return $this->allLinks;
     }
 
+    /*
+        2. open_file_hanlder()
+           Open the next file 
+    */
     function open_file_handler(){
         
         if( strpos( $this->filename , "/home3/backups6/public_html" )  !== false )
@@ -88,14 +108,27 @@ class file_analyzer{
 
         }  
     }
+    /*
+       4. close_file_handler()
+          close the file 
+
+    */
     
+
     function close_file_handler(){
         
         fclose($this->myFileHandler);
         
     }
-    
-    
+    /*
+    3. fetch_lines()
+            It will read each line from the next file.
+            call remove_comments to remove all comments
+        Then, it will check wether the line defines a constant,
+        a variable, or a require statement. If it is, the line is 
+        ignored. Otherwise, it will get the full name by calling
+        "get_full_name()". 
+    */
     function fetch_lines(){
         
         while(!feof($this->myfileHandler)){
@@ -130,6 +163,15 @@ class file_analyzer{
             $this->next_link ();
         }  
     }
+    /*
+        5. remove_comments()
+            check whether there is "\/*" inside the line
+            check whether there is "*\/" inside the line
+            check wehther there is "//" inside the line
+            check whether there is "#"  inside the line.
+            check whether there is ";" inside the line.
+
+    */
     function remove_comments(){
         
         $len = strlen($this->aline);
@@ -206,7 +248,11 @@ class file_analyzer{
             
         }
     }
-    
+    /*
+        6. is_define_constant
+            Is the line a definition of a constant?
+
+    */
     function is_define_constant(){
         
         global $wpConstants;
@@ -242,6 +288,10 @@ class file_analyzer{
         }  
     }
     
+    /*
+        7. is_global_variable()
+            Is it a defition of global variable?
+    */
     function is_global_variable (){
          
         if( strpos( $this->cleanLine, "global" ) !== false ){
@@ -251,9 +301,15 @@ class file_analyzer{
             return false;
         }    
     }
+    /*
+        8. is_require_statement()
+            Is it a require statement?
+            require,
+            include
+            require_once
+            include_once
     
-   
-    
+    */
     function is_require_statement(){
         
         $requirePosition = 0; 
@@ -286,7 +342,11 @@ class file_analyzer{
         return $posArray;
         
     }
-    
+    /*
+        9. get_full_name()
+           get the absolute path and the name. 
+
+    */
     function get_full_name(){
         
         global $wpConstants;
@@ -412,7 +472,13 @@ class file_analyzer{
             } 
         }
     }
-    
+
+
+    /*
+        10. next_link
+            go to next file.
+
+    */
     function next_link(){
         
        # echo $this->prefix . "-" . $this->linkCount . " nextFile=" . $this->nextFile . "<br>";
