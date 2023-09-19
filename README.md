@@ -4,7 +4,7 @@ A reverse engineering project that traces file loading in wordpress system.
 1. analyzer
    
    - It is the start of the project. It will call an object of file_analyzer and then log the next file in the log file
-   - 
+     
 3. file_analyzer
    
    - It will open the next file, reach each line, and analyzer each line. When the line is a require type statement, it will find out the file name and the absolute path, which will be the next file.
