@@ -15,21 +15,21 @@ A reverse engineering project that traces file loading in wordpress system.
 
 ## the file_analyzer class
 1. It contains a bunch of global variables
-   $filename - current file name
-   $prefix   - the prefix used in log file. It is in the form of 1.0.1.0.
-   $logFilename - the name of the file for logging the trace
-   $comment   - comment type
-   $cleanLine - the line after remove comments
-   $lineCount - the order number of each line inside the file
-   $linkCount - the order number of each link inside the file
-   $incompleteInstruction - whether the line is an incomplete statement
-   $myFileHanlder -
-   $aline  - the current line under analysis
-   $nextFile - the next file to be analyzed
-   $dbug   - whether the line is a debug statement
-   $t_dbug - whether the line is a toggle of debug
-   $log_dbug - whether the line is a log of a debug
-   $allLinks - the array of all links inside the current file.
+   - $filename - current file name
+   - $prefix   - the prefix used in log file. It is in the form of 1.0.1.0.
+   - $logFilename - the name of the file for logging the trace
+   - $comment   - comment type
+   - $cleanLine - the line after remove comments
+   - $lineCount - the order number of each line inside the file
+   - $linkCount - the order number of each link inside the file
+   - $incompleteInstruction - whether the line is an incomplete statement
+   - $myFileHanlder -
+   - $aline  - the current line under analysis
+   - $nextFile - the next file to be analyzed
+   - $dbug   - whether the line is a debug statement
+   - $t_dbug - whether the line is a toggle of debug
+   - $log_dbug - whether the line is a log of a debug
+   - $allLinks - the array of all links inside the current file.
    
 3. It contains 11 methods
    a. read_file()
